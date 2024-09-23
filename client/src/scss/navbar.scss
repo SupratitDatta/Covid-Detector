@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+$navbar-bg-color: #5161ce;
+$white-color: #fff;
+$transition-ease: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+i {
+    margin-right: 10px;
+}
+
+.navbar-logo {
+    padding: 15px;
+    color: $white-color;
+}
+
+.navbar-mainbg {
+    background-color: $navbar-bg-color;
+    padding: 0;
+}
+
+#navbarSupportedContent {
+    overflow: hidden;
+    position: relative;
+
+    ul {
+        padding: 0;
+        margin: 0;
+
+        li {
+            list-style-type: none;
+            float: left;
+
+            a {
+                color: $white-color;
+                text-decoration: none;
+                font-size: 20px;
+                display: block;
+                padding: 10px 20px;
+                transition-duration: 0.6s;
+                transition-timing-function: $transition-ease;
+                position: relative;
+
+                i {
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        li.active>a {
+            color: $navbar-bg-color;
+            background-color: transparent;
+            transition: all 0.7s;
+        }
+    }
+
+    a:not(:only-child):after {
+        content: "\f105";
+        position: absolute;
+        right: 20px;
+        top: 5px;
+        font-size: 14px;
+        font-weight: 800;
+        font-family: "Font Awesome 5 Free";
+        display: inline-block;
+        padding-right: 3px;
+        vertical-align: middle;
+        font-weight: 900;
+        transition: 0.5s;
+    }
+
+    .active>a:not(:only-child):after {
+        transform: rotate(90deg);
+    }
+}
+
+.hori-selector {
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition-duration: 0.6s;
+    transition-timing-function: $transition-ease;
+    background-color: rgb(252, 238, 225);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-top: 10px;
+
+    .right,
+    .left {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background-color: rgb(252, 238, 225);
+        bottom: 10px;
+    }
+
+    .right {
+        right: -25px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: $navbar-bg-color;
+            bottom: 0;
+            right: -25px;
+        }
+    }
+
+    .left {
+        left: -25px;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: $navbar-bg-color;
+            bottom: 0;
+            left: -25px;
+        }
+    }
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.signlog {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 5vw;
+
+    button {
+        color: $white-color;
+        border: 2px solid $white-color;
+        border-radius: 2px;
+        height: 6vh;
+        width: 7vw;
+        margin: auto;
+        display: block;
+        font-size: 15px;
+        background: none;
+        cursor: pointer;
+    }
+
+    .signin {
+        margin-left: 2vw;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar-expand-custom {
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+
+        .navbar-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+
+        .navbar-toggler {
+            display: none;
+        }
+
+        .navbar-collapse {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    #navbarSupportedContent ul li a {
+        padding: 12px 30px;
+    }
+
+    .hori-selector {
+        margin-top: 0;
+        margin-left: 10px;
+        border-radius: 0;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+
+        .left,
+        .right {
+            right: 10px;
+        }
+
+        .left {
+            top: -25px;
+            left: auto;
+
+            &:before {
+                left: -25px;
+                top: -25px;
+            }
+        }
+
+        .right {
+            bottom: -25px;
+
+            &:before {
+                bottom: -25px;
+                left: -25px;
+            }
+        }
+    }
+}
